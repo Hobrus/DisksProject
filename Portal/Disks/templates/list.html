@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список дисков</title>
+</head>
+<body>
+  <h1>Список дисков</h1>
+  <ul>
+    {% for disk in disks %}
+    <li>
+      <h2><a href="{% url 'disk_retrive' disk.pk %}">Название: {{ disk.title }}</a></h2>
+      <p>Жанр: {{ disk.genre }}</p>
+      <p>Автор: {{ disk.author }}</p>
+    </li>
+    {% empty %}
+    <li>Дисков нет</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
