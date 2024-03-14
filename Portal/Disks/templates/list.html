@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Список дисков</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Список дисков{% endblock %}
+
+{% block content %}
   <h1>Список дисков</h1>
   <ul>
     {% for disk in disks %}
@@ -17,5 +15,4 @@
     <li>Дисков нет</li>
     {% endfor %}
   </ul>
-</body>
-</html>
+{% endblock %}

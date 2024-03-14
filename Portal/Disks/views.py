@@ -1,7 +1,9 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import DiskForm
 from .models import Disk
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -10,6 +12,7 @@ def disk_list(request):
     return render(request, 'list.html', {'disks': disks})
 
 
+@login_required
 def disk_create(request):
     if request.method == 'POST':
         form = DiskForm(request.POST, request.FILES)
@@ -24,4 +27,3 @@ def disk_create(request):
 def disk_retrive(request, pk):
     disk = get_object_or_404(Disk, pk=pk)
     return render(request, 'retrieve.html', {'disk': disk})
-
