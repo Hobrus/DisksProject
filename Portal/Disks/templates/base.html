@@ -11,7 +11,12 @@
                 <li><a href="{% url 'disk_list' %}">Список дисков</a></li>
                 <li><a href="{% url 'disk_create' %}">Добавить диск</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Выход</a></li>
+                <li>
+                    <form method="POST" enctype="multipart/form-data" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Выход</button>
+                    </form>
+                </li>
                 {% else %}
                 <li><a href="{% url 'login' %}">Вход</a></li>
                 {% endif %}
