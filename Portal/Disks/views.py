@@ -17,7 +17,9 @@ def disk_create(request):
     if request.method == 'POST':
         form = DiskForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            disk = form.save(commit=False)
+            disk.request = request
+            disk.save()
             return redirect('disk_list')
     else:
         form = DiskForm()
